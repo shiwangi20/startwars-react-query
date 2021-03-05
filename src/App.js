@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react';
+import NavBar from "./components/NavBar";
+import Planets from './components/Planets';
+import People from './components/People';
 
-function App() {
+const App = () => {
+  const [page,setPage] = useState('Planets');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Start Wars Info</h1>
+      <NavBar setPage={setPage}/>
+      <div className="content">
+        { page === 'Planets' ? <Planets/> : <People/>}
+      </div>
     </div>
   );
 }
